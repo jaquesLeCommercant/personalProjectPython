@@ -1,5 +1,5 @@
 # 1. clock system and events that add time // done
-# 2. events arent prompted by the script, but by the player. idk if that makes sense. // not done and probably difficult
+# 2. events arent prompted by the script, but by the player. idk if that makes sense. // done. very easy actually.
 # 3. add needs (hunger, sleep, etc...) // not done
 # 4. make needs fullfillment decerease as time goes. add ways to fullfill those needs (by eeping, eating, etc...) // not done
 # 5. make a basic storyline with like events to go to school and study and do stuff like the rough shape. // not done
@@ -7,7 +7,8 @@
 
 ### please SIMPLIFY THE CLOCK // done :D
 
-name = input("What is your character's first name ? ")
+firstName = input("What is your character's first name ? ")
+lastName = input("What is your character's last name ? ")
 # maybe add pronouns or something if player talks to npcs
 
 time = 420
@@ -18,22 +19,61 @@ def show_clock():
     minute = time % 60
     print(f"{hour:02d}:{minute:02d}")
 
-print(f"Yo {name}, you have to get up.")
+def sleep():
+    # set an alarm for an hour. how many time you sleep affects you. dont be like Hilda, sleep.
+    print("console: sleep() called")
+
+def breakfast():
+    global time
+    choiceBreakfast = input("you can choose to either [a] eat a snack bar (00:05) or [b] cook some beacon and eggs (00:20)")
+    if choiceBreakfast == "a":
+        print("you eat a snack bar. it aint really tasty, and it doesnt sustain you well.")
+        time += 5
+    elif choiceBreakfast == "b":
+        print("You cook some beacon and eggs. Cooking takes time, but at least you eat a yummy and fullfilling breakfast.")
+        time += 20
+    else:
+        print("annoying")
+
+def study():
+    # function to study. gonna be difficult, and i think its not needed yet for the MVP.
+    print("console: study() called")
+
+def checkPhone():
+    # could always be useful.
+    print("console: checkPhone() called")
+
+def leaveBedroom():
+    # youre gonna be late if you dont leave your home.
+    print("console: leaveBedroom() called")
+
+print(f"Yo {firstName}, you have to get up.")
 show_clock()
 
-# breakfast
+# choice bedroom
+choice_bedroom = input("""You stand in your bedroom. What do you do ?
+[a] Sleep
+[b] Eat breakfast
+[c] Study
+[d] Go on phone
+[e] Go outside
+""")
 
-choiceBreakfast = input("you can choose to either eat a (a) snack bar (00:05) or (b) cook some beacon and eggs (00:20)")
-if choiceBreakfast == "a":
-    print("you eat a snack bar. it aint really yummy, and it doesnt sustain you well.")
-    time += 5
-elif choiceBreakfast == "b":
-    print("you cook some tasty beacon and eggs. it takes a long time, but once your done you enjoy a delightful breakfast that sustains you well and makes you happier about your everyday life and makes you hopeful about the future.")
-    time += 20
+if choice_bedroom == "a":
+    sleep()
+elif choice_bedroom == "b":
+    breakfast()
+elif choice_bedroom == "c":
+    study()
+elif choice_bedroom == "d":
+    checkPhone()
+elif choice_bedroom == "e":
+    leaveBedroom()
 else:
     print("annoying")
-    
+
 show_clock()
+
 
 # wait
 
@@ -55,7 +95,8 @@ show_clock()
 
 
 
+
 ## HUNGER
-hunger = 100
+# hunger = 100
 # and it decreases as time passes. once i get a gui, ill make it like a bar.
 
